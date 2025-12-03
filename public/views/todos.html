@@ -1,0 +1,22 @@
+<div class="alert alert-secondary" ng-init="loadTasks()">
+   <form name="myForm" class="row mb-3">
+         <div class="col-9">
+            <input name="task" ng-model="task" ng-required="true" type="text" class="form-control" placeholder="Enter task item"/>
+            <span ng-show="myForm.task.$error.required" class="badge text-bg-danger">Required</span>
+         </div>
+         <div class="col-3">
+            <button ng-disabled="myForm.task.$error.required" ng-click="addTask()" type="button" class="btn btn-primary form-control">Add</button>
+         </div>
+   </form>
+
+   
+   <ul class="list-group">
+         <li ng-repeat="taskItem in tasks" class="list-group-item">
+            {{ taskItem.task }}
+            <button ng-click="removeTask(taskItem._id)" class="btn btn-danger btn-sm float-end">Delete</button>
+            <button ng-click="editTask(taskItem._id)" class="btn btn-success btn-sm float-end me-2">Edit</button>
+         </li>
+   </ul>
+</div>
+
+<button ng-click="logout()" class="btn btn-danger">Logout</button>
